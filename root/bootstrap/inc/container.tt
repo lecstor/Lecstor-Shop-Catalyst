@@ -1,0 +1,12 @@
+
+<div class="content">
+  [% content | none %]
+</div>
+
+<div class="sidebar span3">
+  [% PROCESS inc/sidebar.tt %]
+</div>
+
+<div class="sidebar-right">
+  [% PROCESS inc/sidebar_right.tt %]
+</div>

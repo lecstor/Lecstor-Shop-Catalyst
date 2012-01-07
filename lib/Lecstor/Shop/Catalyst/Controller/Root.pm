@@ -20,18 +20,61 @@ Lecstor::Shop::Catalyst::Controller::Root - Root Controller for Lecstor::Shop::C
 
 =head1 METHODS
 
+=method setup
+
+=cut
+
+sub setup :Chained('/') :PathPart('') :CaptureArgs(0){}
+
+=method full_page
+
+=cut
+
+sub full_page :Chained('setup') :PathPart('') :CaptureArgs(0){
+    my ( $self, $c ) = @_;
+
+    my $app = $c->lecstor;
+
+#    $c->stash({
+#        site => $app->site,
+#        products => $app->products,
+#        visitor => $app->visitor,
+#    });
+
+    if ($c->req->method eq 'GET'){
+        my $recent = $c->session->{recent_uri} || [];
+        pop @$recent if @$recent >= 10;
+        unshift @$recent, { uri => $c->req->uri->as_string };
+    }
+}
+
 =head2 index
 
 The root page (/)
 
 =cut
 
-sub index :Path :Args(0) {
+sub index :Chained('full_page') :PathPart('') :Args(0){
     my ( $self, $c ) = @_;
 
-    # Hello World
-    $c->response->body( $c->welcome_message );
+    my $app = $c->lecstor;
+    
+    $c->stash({
+        template => 'index.tt',
+        view => $app->view({
+            page => {
+                title => 'Home',
+            },
+            section => {
+                search_title => 'Search Titles',
+                search_action => '/product/search',
+#                label => 'home',
+                name => 'Home',
+            },
+        }),
+    });
 }
+
 
 =head2 default
 
@@ -39,7 +82,7 @@ Standard 404 error page
 
 =cut
 
-sub default :Path {
+sub default :Private {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
     $c->response->status(404);

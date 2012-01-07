@@ -1,0 +1,13 @@
+        <div class="well">
+          <h5>My [% site.company_name %]</h5>
+          <ul class="nav left-nav">
+            <li class="dropdown">
+              <a href="#">My Searches</a>
+              <a href="#">Specials</a>
+              <a href="#">FAQ</a>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+          <div style="clear: both"></div>
+        </div>
+

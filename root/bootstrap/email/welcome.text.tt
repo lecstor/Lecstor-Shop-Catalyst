@@ -1,0 +1,6 @@
+Hi[% IF customer.firstname; " "; customer.firstname; END %],
+
+Welcome to [% site.company_name %] [% site.store_name %]!
+
+[% PROCESS email/signature.text.tt %]
+

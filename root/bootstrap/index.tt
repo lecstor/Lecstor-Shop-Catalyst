@@ -1,0 +1,20 @@
+[% WRAPPER wrap/default.tt %]
+  <div class="hero-unit">
+    <h2>Latest Gear</h2>
+    <ul class="media-grid">
+      [% FOREACH product IN products.list.new_releases({ rows => 12 }) %]
+        <li>
+          <div>
+            <a href="#"><img class="thumbnail" src="http://placehold.it/100x140" alt="[% product.name %]"></a>
+            <form action="/basket/add/[% product.id %]" style="display: inline" method="post">
+              <button class="btn small success" type="submit">+Basket</button>
+            </form>
+            <form action="/wishlist/add/[% product.id %]" style="display: inline" method="post">
+              <button class="btn small primary" type="submit">+Wishlist</button>
+            </form>
+          </div>
+        </li>
+      [% END %]
+    </ul>
+  </div>
+[% END %]

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    [% PROCESS inc/head.tt %]
+  </head>
+  <body>
+    [% PROCESS inc/modal_body.tt %]
+  </body>
+  [% PROCESS inc/view_meta.tt %]
+</html>
+

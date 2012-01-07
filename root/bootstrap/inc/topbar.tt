@@ -1,0 +1,24 @@
+      <div class="topbar-inner">
+        <div class="container-fluid">
+
+          <a class="brand" href="/">[% view.site.company_name %] [% view.site.store_name %]</a>
+
+          <ul class="nav">
+            [% FOREACH section IN view.site.sections %]
+              <li[% IF view.section.name == section; ' class="active"'; END %]><a href="#">[% section %]</a></li>
+            [% END %]
+          </ul>
+
+          <div class="pull-right">
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            <form class="search" action="[% view.section.search_action %]">
+              <input class="span4" type="text" name="q" value="[% view.section.search_title %]" maxlength="128">
+              <button class="btn primary" type="submit">Search</button>
+            </form>
+          </div>
+
+        </div>
+      </div>

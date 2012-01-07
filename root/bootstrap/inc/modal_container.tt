@@ -1,0 +1,4 @@
+<div class="content">
+  [% content | none %]
+</div>
+

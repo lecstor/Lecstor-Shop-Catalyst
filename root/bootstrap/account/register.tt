@@ -1,0 +1,6 @@
+[% WRAPPER wrap/modal.tt %]
+<div class="hero-unit">
+  <h2>Register</h2>
+  [% PROCESS account/inc/register.tt %]
+</div>
+[% END %]

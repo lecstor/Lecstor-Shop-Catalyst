@@ -1,0 +1,8 @@
+    <div class="topbar">
+      [% PROCESS inc/topbar.tt %]
+    </div>
+
+    <div class="container-fluid">
+      [% PROCESS inc/container.tt %]
+    </div>
+
