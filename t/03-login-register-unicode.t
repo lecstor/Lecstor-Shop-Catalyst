@@ -17,7 +17,7 @@ use Lecstor::Test::Content;
 
 use Test::DBIx::Class {
     config_path => [ File::Spec->splitdir($Bin), qw(etc schema) ],
-    resultsets => [ 'Login' ],
+    resultsets => [ 'User' ],
 };
 
 use_ok 'Test::WWW::Mechanize::Catalyst', 'Lecstor::Shop::Catalyst';
@@ -41,7 +41,7 @@ $mech->post_ok(
     }
 );
 
-ok my $login = Login->find({ email => 'jason@lecstor.com' })
+ok my $login = User->find({ email => 'jason@lecstor.com' })
   => 'login created' or diag($mech->content);
 
 $mech->post_ok(

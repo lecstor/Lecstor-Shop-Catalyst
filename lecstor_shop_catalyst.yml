@@ -1,1 +1,6 @@
 name: Lecstor::Shop::Catalyst
+lecstor:
+  product_search:
+    index_path: 'path/to/index/directory'
+    index_create: 1
+    index_truncate: 1
