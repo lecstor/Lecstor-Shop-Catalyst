@@ -67,7 +67,6 @@ $mech->post_ok(
 #warn $mech->content;
 $mech->content_like( qr!<h2>Log In</h2>!, 'is login page' );
 $mech->content_like( qr/A valid email address is required/, 'invalid email' );
-dump_meta($mech);
 
 $mech->post_ok(
     '/login',
