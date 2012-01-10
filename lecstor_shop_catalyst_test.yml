@@ -1,14 +1,13 @@
-name: Lecstor::Shop::Catalyst
 lecstor:
   product_search:
     index_path: 'path/to/index/directory'
     index_create: 1
     index_truncate: 1
 Model::Schema:
-  schema_class: BB::DB
+  schema_class: Lecstor::Schema
   connect_info:
-    - 'DBI:mysql:test;mysql_socket=/tmp/mybase/tmp/mysql.sock'
-    - 'root'
+    - 'dbi:SQLite:dbname=test.db'
+    - ''
     - ''
     - 
       AutoCommit: 1

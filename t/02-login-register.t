@@ -6,8 +6,10 @@ use utf8;
 
 use FindBin qw($Bin);
 
-$ENV{LECSTOR_DEPLOY} ||= 'test';
-$ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
+BEGIN {
+    $ENV{LECSTOR_DEPLOY} ||= 'test';
+    $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
+};
 
 
 use HTTP::Request::Common;
@@ -19,8 +21,6 @@ use Test::DBIx::Class {
 };
 
 use_ok 'Test::WWW::Mechanize::Catalyst', 'Lecstor::Shop::Catalyst';
-
-Lecstor::Shop::Catalyst->model('Schema')->schema(Schema);
 
 fixtures_ok 'basic'
     => 'installed the basic fixtures from configuration files';

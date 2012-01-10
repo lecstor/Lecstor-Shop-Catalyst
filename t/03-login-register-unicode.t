@@ -15,14 +15,16 @@ use HTTP::Request::Common;
 use File::Path qw!rmtree!;
 use Lecstor::Test::Content;
 
+BEGIN {
+    $ENV{LECSTOR_DEPLOY} = 'test';
+};
+
 use Test::DBIx::Class {
     config_path => [ File::Spec->splitdir($Bin), qw(etc schema) ],
     resultsets => [ 'User' ],
 };
 
 use_ok 'Test::WWW::Mechanize::Catalyst', 'Lecstor::Shop::Catalyst';
-
-Lecstor::Shop::Catalyst->model('Schema')->schema(Schema);
 
 fixtures_ok 'basic'
     => 'installed the basic fixtures from configuration files';

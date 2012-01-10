@@ -1,12 +1,6 @@
 {
     'schema_class' => 'Lecstor::Schema',
-    'connect_opts' => {
-        name_sep => '.',
-        quote_char => '`',
-        mysql_enable_utf8 => '1',
-    },
-
-    'traits' => [qw!Testmysqld!],
+    'connect_info' => ['dbi:SQLite:dbname=test.db','',''],
     'fixture_sets' => {
         'basic' => [
             'ActionType' => [

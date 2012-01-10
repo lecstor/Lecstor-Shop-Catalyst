@@ -6,13 +6,18 @@ use Test::More;
 use FindBin qw($Bin);
 use lib "$Bin/lib";
 
-use Catalyst::Test 'Lecstor::Shop::Catalyst';
+BEGIN {
+    $ENV{LECSTOR_DEPLOY} = 'test';
+};
 
 use Test::DBIx::Class {
     config_path => [ File::Spec->splitdir($Bin), qw(etc schema) ],
 };
 
-Lecstor::Shop::Catalyst->model('Schema')->schema(Schema);
+use Catalyst::Test 'Lecstor::Shop::Catalyst';
+
+
+#Lecstor::Shop::Catalyst->model('Schema')->schema(Schema);
 
 ok( request('/')->is_success, 'Request should succeed' );
 
